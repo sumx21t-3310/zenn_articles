@@ -2,8 +2,21 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Repository status
+## What this repository is
 
-This repository (`zenn_articles`) is currently empty — it contains no files, no `package.json`, and no `.git` directory. There is no existing code, build tooling, or article content to describe yet.
+A [Zenn](https://zenn.dev) content repository managed via `zenn-cli`, connected to Zenn through its GitHub repository linking feature. Pushing to `main` deploys published content to Zenn automatically.
 
-When content is added to this repository (e.g. Zenn articles, a `zenn-cli` setup, or other project files), regenerate this file by running `/init` again so it reflects the actual structure, commands, and conventions in use at that time.
+## Commands
+
+- `npx zenn new:article` — scaffold a new article under `articles/` with a generated slug
+- `npx zenn new:book` — scaffold a new book under `books/`
+- `npx zenn preview` — run a local preview server to check rendering before publishing
+
+There is no build/lint/test pipeline; this repo is content only.
+
+## Structure
+
+- `articles/*.md` — one Markdown file per article, filename is the slug. Frontmatter controls publication:
+  - `title`, `emoji`, `type` (`tech` or `idea`), `topics`, `published` (`false` until ready to go live)
+- `books/*/` — multi-chapter books, each with its own config and chapter files
+- Only content with `published: true` on `main` is visible on Zenn — draft by setting `published: false` and flipping it when ready.
